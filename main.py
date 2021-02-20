@@ -1,10 +1,6 @@
 import bs4 as bs
 import pickle
 import requests
-import pandas as pd
-import pandas_datareader.data as web
-import os
-import datetime as dt
 
 
 def save_ibov_tickers():
