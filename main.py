@@ -1,6 +1,11 @@
 import bs4 as bs
 import pickle
 import requests
+import pandas as pd
+import pandas_datareader.data as web
+import os
+import datetime as dt
+
 
 def save_ibov_tickers():
     B3_URL = 'http://bvmf.bmfbovespa.com.br/indices/ResumoCarteiraQuadrimestre.aspx?Indice=IBOV&idioma=pt-br'
@@ -11,7 +16,7 @@ def save_ibov_tickers():
     tickers= []
 
 
-    for row in table.findAll('tr',{"class":"rgAltRow"}):
+    for row in table.findAll('tr',attrs={'disabled':""}):
         #print(row.text)
         ticker = row.findAll('td')[0].text.replace("\n","")
         tickers.append(ticker)
